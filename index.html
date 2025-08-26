@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoSouls - NFT Collection</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Press Start 2P (Pixel Art) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <script>
+        // Custom Tailwind CSS Configuration
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Press Start 2P"', 'cursive'],
+                    },
+                    colors: {
+                        'brand-green': '#00ff67',
+                        'brand-light-green': '#32ff84', // A slightly lighter green for hover effects
+                        'dark-bg': '#121212',
+                        'dark-card': '#1E1E1E',
+                        'main-text': '#BEA5F5', // A lighter purple for better contrast and readability
+                        'dark-text-secondary': '#A0A0A0',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Scrollbar styling (optional, but improves aesthetics) */
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+        body::-webkit-scrollbar-track {
+            background: #1E1E1E;
+        }
+        body::-webkit-scrollbar-thumb {
+            background-color: #00ff67;
+            border-radius: 20px;
+        }
+        /* New gradient background for the entire site */
+        body {
+            background-color: #121212; /* Fallback color */
+            background-image: linear-gradient(180deg, #3a225e 0%, #2a1a47 50%, #121212 100%);
+            background-attachment: fixed; /* Makes the gradient stay in place while scrolling */
+        }
+        /* Prevent browser from trying to bold the pixel font */
+        h1, h2, h3, h4, h5, h6, b, strong, button, a {
+            font-weight: 400 !important;
+        }
+        /* Styles for scroll animations */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Offset for fixed header when scrolling to a section */
+        section[id] {
+            scroll-margin-top: 140px; /* Increased offset for better spacing below fixed header */
+        }
+    </style>
+</head>
+<body class="text-main-text font-sans">
+
+    <!-- ========== HEADER ========== -->
+    <header id="header" class="bg-dark-bg/30 backdrop-blur-md fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#hero" class="relative -ml-4 -mt-2">
+                <img src="https://i.imgur.com/s8Iixx2.png" alt="CryptoSouls Logo" class="h-14 w-auto">
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8 text-xs">
+                <a href="#about" class="text-dark-text-secondary hover:text-main-text transition-colors">About</a>
+                <a href="#gallery" class="text-dark-text-secondary hover:text-main-text transition-colors">Gallery</a>
+                <a href="#roadmap" class="text-dark-text-secondary hover:text-main-text transition-colors">Roadmap</a>
+                <a href="#team" class="text-dark-text-secondary hover:text-main-text transition-colors">Team</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-main-text focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <nav class="px-6 pt-2 pb-4 flex flex-col space-y-2">
+                <a href="#about" class="block text-dark-text-secondary hover:text-main-text transition-colors py-2">About</a>
+                <a href="#gallery" class="block text-dark-text-secondary hover:text-main-text transition-colors py-2">Gallery</a>
+                <a href="#roadmap" class="block text-dark-text-secondary hover:text-main-text transition-colors py-2">Roadmap</a>
+                <a href="#team" class="block text-dark-text-secondary hover:text-main-text transition-colors py-2">Team</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ========== HERO SECTION ========== -->
+        <section id="hero" class="min-h-screen flex items-center">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-3xl md:text-4xl lg:text-5xl text-main-text uppercase tracking-wider mb-4 leading-relaxed">
+                    Unveil Your <span class="text-brand-green">Digital Soul</span>
+                </h1>
+                <p class="text-xs md:text-sm text-dark-text-secondary max-w-3xl mx-auto mb-8 leading-loose">
+                    A collection of 3,333 unique, algorithmically generated NFTs that represent the essence of identity in the digital age.
+                </p>
+                <a href="#" class="bg-brand-green hover:bg-brand-light-green text-dark-bg py-4 px-10 rounded-lg text-sm transition-all duration-300 transform hover:scale-105 inline-block">
+                    Mint Yours Now
+                </a>
+            </div>
+        </section>
+
+        <!-- ========== ABOUT SECTION ========== -->
+        <section id="about" class="py-20 fade-in-section">
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                <div class="w-full h-auto flex justify-center items-center">
+                    <img src="https://placehold.co/600x600/00ff67/121212?text=CryptoSoul+Art" alt="Art of a CryptoSoul" class="w-2/3 h-auto object-cover rounded-lg shadow-2xl shadow-brand-green/20">
+                </div>
+                <!-- Centering the text block to match the image block's alignment for symmetry -->
+                <div class="flex justify-center items-center">
+                    <div class="max-w-lg">
+                        <h2 class="text-xl md:text-2xl text-main-text mb-4">What are <span class="text-brand-green">CryptoSouls</span>?</h2>
+                        <p class="text-dark-text-secondary mb-4 text-xs leading-loose">
+                            CryptoSouls is more than a collection of JPEGs. It's an artistic exploration of identity on the blockchain. Each "Soul" is generated from hundreds of unique traits, like auras, essences, and fragments, creating a piece of digital art that is uniquely yours.
+                        </p>
+                        <p class="text-dark-text-secondary text-xs leading-loose">
+                            Being a CryptoSoul holder gives you access to a vibrant community, exclusive events, and a role in the evolution of our universe.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== GALLERY SECTION ========== -->
+        <section id="gallery" class="py-20 bg-dark-card/60 fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="text-xl md:text-2xl text-center text-main-text mb-12">Meet Some <span class="text-brand-green">Souls</span></h2>
+                <!-- Using Flexbox for a centered, wrapping gallery -->
+                <div class="flex flex-wrap justify-center -mx-2">
+                    <!-- Gallery Images. Replace the `src` with your images. -->
+                    <div class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 p-2">
+                        <div class="group relative overflow-hidden rounded-lg">
+                            <img src="https://placehold.co/400x400/1E1E1E/00ff67?text=Soul+%23001" alt="NFT 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <h3 class="text-white text-sm">CryptoSoul #001</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 p-2">
+                        <div class="group relative overflow-hidden rounded-lg">
+                            <img src="https://placehold.co/400x400/1E1E1E/00ff67?text=Soul+%23789" alt="NFT 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                             <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <h3 class="text-white text-sm">CryptoSoul #789</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 p-2">
+                        <div class="group relative overflow-hidden rounded-lg">
+                            <img src="https://placehold.co/400x400/1E1E1E/00ff67?text=Soul+%231234" alt="NFT 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                             <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <h3 class="text-white text-sm">CryptoSoul #1234</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 p-2">
+                        <div class="group relative overflow-hidden rounded-lg">
+                            <img src="https://placehold.co/400x400/1E1E1E/00ff67?text=Soul+%235000" alt="NFT 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                             <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <h3 class="text-white text-sm">CryptoSoul #3333</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== ROADMAP SECTION ========== -->
+        <section id="roadmap" class="pt-28 pb-40 fade-in-section"> <!-- Increased top padding to move title down -->
+            <div class="container mx-auto px-6">
+                <h2 class="text-xl md:text-2xl text-center text-main-text mb-12">Our <span class="text-brand-green">Roadmap</span></h2>
+                <div class="relative max-w-4xl mx-auto">
+                    <!-- Vertical Timeline: shortened by using top/bottom instead of h-full -->
+                    <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-4 bottom-4 w-0.5 bg-dark-card"></div>
+                    
+                    <!-- Item 1 -->
+                    <div class="mb-6 flex md:justify-between items-center w-full md:right-timeline">
+                        <div class="hidden md:block order-1 w-5/12"></div>
+                        <div class="z-20 flex items-center order-1 bg-brand-green shadow-xl w-8 h-8 rounded-full">
+                            <h1 class="mx-auto text-sm text-dark-bg">1</h1>
+                        </div>
+                        <div class="order-1 bg-dark-card rounded-lg shadow-xl w-full md:w-5/12 ml-8 md:ml-0 px-6 py-4">
+                            <h3 class="text-main-text text-base">Phase 1: Launch</h3>
+                            <p class="text-xs text-dark-text-secondary mt-2 leading-relaxed">Public mint of 3,333 unique CryptoSouls NFTs. Community building on Discord and X (Twitter), collaborations with collections, artists and creators, and the launch of the official site.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="mb-6 flex md:justify-between md:flex-row-reverse items-center w-full md:left-timeline">
+                        <div class="hidden md:block order-1 w-5/12"></div>
+                        <div class="z-20 flex items-center order-1 bg-brand-green shadow-xl w-8 h-8 rounded-full">
+                            <h1 class="mx-auto text-dark-bg text-sm">2</h1>
+                        </div>
+                        <div class="order-1 bg-dark-card rounded-lg shadow-xl w-full md:w-5/12 ml-8 md:ml-0 px-6 py-4">
+                            <h3 class="text-main-text text-base">Phase 2: Utility</h3>
+                            <p class="text-xs text-dark-text-secondary mt-2 leading-relaxed">Simple games for the community will be introduced and NFTs will start yielding tokens.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="mb-6 flex md:justify-between items-center w-full md:right-timeline">
+                        <div class="hidden md:block order-1 w-5/12"></div>
+                        <div class="z-20 flex items-center order-1 bg-brand-green shadow-xl w-8 h-8 rounded-full">
+                            <h1 class="mx-auto text-sm text-dark-bg">3</h1>
+                        </div>
+                        <div class="order-1 bg-dark-card rounded-lg shadow-xl w-full md:w-5/12 ml-8 md:ml-0 px-6 py-4">
+                            <h3 class="text-main-text text-base">Phase 3: Expansion</h3>
+                            <p class="text-xs text-dark-text-secondary mt-2 leading-relaxed">Launch of interactive experiences with CryptoSouls, such as games.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== TEAM SECTION ========== -->
+        <section id="team" class="py-20 bg-dark-card/60 fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="text-xl md:text-2xl text-center text-main-text mb-12">Our <span class="text-brand-green">Creators</span></h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                    <!-- Member 1 -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/150x150/00ff67/121212?text=K" alt="Photo of the Artist" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-green">
+                        <h3 class="text-base text-main-text">Kaauann</h3>
+                        <p class="text-brand-green text-xs">Lead Artist</p>
+                    </div>
+                    <!-- Member 2 -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/150x150/00ff67/121212?text=V" alt="Photo of the Developer" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-green">
+                        <h3 class="text-base text-main-text">Victorsprj</h3>
+                        <p class="text-brand-green text-xs">Blockchain Developer</p>
+                    </div>
+                    <!-- Member 3 -->
+                    <div class="text-center">
+                        <img src="https://placehold.co/150x150/00ff67/121212?text=K" alt="Photo of the Community Manager" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-green">
+                        <h3 class="text-base text-main-text">Kauker</h3>
+                        <p class="text-brand-green text-xs">Community Manager</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-dark-card/60 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6">
+                <!-- X (formerly Twitter) Link -->
+                <a href="https://x.com/CryptoSoulsNFT" target="_blank" rel="noopener noreferrer" class="text-dark-text-secondary hover:text-brand-green transition-colors" aria-label="X (formerly Twitter)">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <!-- Discord Link -->
+                <a href="#" class="text-dark-text-secondary hover:text-brand-green transition-colors" aria-label="Discord">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.36981C18.7915 3.72559 17.1858 3.28443 15.5258 3.00003C15.5258 3.00003 15.5203 3.00559 15.5147 3.01115C15.2941 3.43337 15.1063 3.90003 14.9631 4.36981C12.9336 4.05559 10.9097 4.05559 8.87455 4.36981C8.73133 3.90003 8.54355 3.43337 8.32297 3.01115C8.31741 3.00559 8.31185 3.00003 8.31185 3.00003C6.65185 3.28443 5.04612 3.72559 3.52068 4.36981C0.419022 9.56115 -0.00619461 14.6784 1.15838 19.5612C2.99805 20.9889 5.02752 22.0556 7.16838 22.8445C7.47311 22.5303 7.74502 22.1889 7.97559 21.8256C7.38068 21.5389 6.81855 21.2198 6.28918 20.8723C6.38864 20.7945 6.48811 20.7112 6.58197 20.6223C10.1336 22.2445 13.7341 22.2445 17.2584 20.6223C17.3522 20.7112 17.4517 20.7945 17.5512 20.8723C16.9991 21.2198 16.437 21.5389 15.842 21.8256C16.0726 22.1889 16.3445 22.5303 16.6493 22.8445C18.7901 22.0556 20.8196 20.9889 22.6593 19.5612C23.8755 14.4223 23.3881 9.27234 20.317 4.36981ZM14.4231 16.3612C13.4559 16.3612 12.6567 15.5112 12.6567 14.4723C12.6567 13.4334 13.4336 12.5834 14.4231 12.5834C15.4126 12.5834 16.2118 13.4334 16.1896 14.4723C16.1896 15.5112 15.4126 16.3612 14.4231 16.3612ZM9.41264 16.3612C8.44543 16.3612 7.64618 15.5112 7.64618 14.4723C7.64618 13.4334 8.42311 12.5834 9.41264 12.5834C10.4022 12.5834 11.2014 13.4334 11.1792 14.4723C11.1792 15.5112 10.4022 16.3612 9.41264 16.3612Z"></path></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Logic for the mobile menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Logic to close the mobile menu when a link is clicked
+        const navLinks = mobileMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Logic for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                } else {
+                    entry.target.classList.remove('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        const sectionsToAnimate = document.querySelectorAll('.fade-in-section');
+        sectionsToAnimate.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
