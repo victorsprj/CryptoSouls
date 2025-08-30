@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CryptoSouls - NFT Collection</title>
+    <title>CryptoSouls Supply Distribution</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -69,6 +69,13 @@
         section[id] {
             scroll-margin-top: 140px; /* Increased offset for better spacing below fixed header */
         }
+        /* Twinkle animation for stars */
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.4; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        .star { animation: twinkle 3s infinite ease-in-out; }
+
     </style>
 </head>
 <body class="text-main-text font-sans">
@@ -84,6 +91,7 @@
             <!-- Desktop Navigation -->
             <nav class="hidden md:flex space-x-8 text-xs">
                 <a href="#about" class="text-dark-text-secondary hover:text-main-text transition-colors">About</a>
+                <a href="#supply" class="text-dark-text-secondary hover:text-main-text transition-colors">Supply</a>
                 <a href="#gallery" class="text-dark-text-secondary hover:text-main-text transition-colors">Gallery</a>
                 <a href="#roadmap" class="text-dark-text-secondary hover:text-main-text transition-colors">Roadmap</a>
                 <a href="#team" class="text-dark-text-secondary hover:text-main-text transition-colors">Team</a>
@@ -101,6 +109,7 @@
         <div id="mobile-menu" class="hidden md:hidden">
             <nav class="px-6 pt-2 pb-4 flex flex-col space-y-2">
                 <a href="#about" class="block text-dark-text-secondary hover:text-main-text transition-colors py-2">About</a>
+                <a href="#supply" class="block text-dark-text-secondary hover:text-main-text transition-colors py-2">Supply</a>
                 <a href="#gallery" class="block text-dark-text-secondary hover:text-main-text transition-colors py-2">Gallery</a>
                 <a href="#roadmap" class="block text-dark-text-secondary hover:text-main-text transition-colors py-2">Roadmap</a>
                 <a href="#team" class="block text-dark-text-secondary hover:text-main-text transition-colors py-2">Team</a>
@@ -110,22 +119,45 @@
 
     <main>
         <!-- ========== HERO SECTION ========== -->
-        <section id="hero" class="min-h-screen flex items-center">
-            <div class="container mx-auto px-6 text-center">
-                <h1 class="text-3xl md:text-4xl lg:text-5xl text-main-text uppercase tracking-wider mb-4 leading-relaxed">
-                    Unveil Your <span class="text-brand-green">Digital Soul</span>
+        <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+            <!-- Pixel Stars Background -->
+            <div class="absolute inset-0 z-0 pointer-events-none">
+                <span class="star absolute top-[15%] left-[10%] text-brand-green" style="animation-delay: 0s;">*</span>
+                <span class="star absolute top-[25%] left-[85%] text-main-text text-xs" style="animation-delay: -1.5s;">+</span>
+                <span class="star absolute top-[75%] left-[90%] text-brand-green" style="animation-delay: -0.5s;">*</span>
+                <span class="star absolute top-[80%] left-[20%] text-dark-text-secondary text-xs" style="animation-delay: -2.5s;">*</span>
+                <span class="star absolute top-[40%] left-[45%] text-main-text text-sm" style="animation-delay: -1s;">+</span>
+                <span class="star absolute top-[5%] left-[50%] text-dark-text-secondary text-xs" style="animation-delay: -2s;">*</span>
+                <span class="star absolute top-[95%] left-[55%] text-brand-green text-xs" style="animation-delay: -0.2s;">+</span>
+                <span class="star absolute top-[60%] left-[5%] text-main-text" style="animation-delay: -1.8s;">*</span>
+                <!-- Added more stars -->
+                <span class="star absolute top-[30%] left-[30%] text-main-text text-xs" style="animation-delay: -0.8s;">*</span>
+                <span class="star absolute top-[50%] left-[70%] text-brand-green text-sm" style="animation-delay: -2.2s;">+</span>
+                <span class="star absolute top-[10%] left-[75%] text-dark-text-secondary" style="animation-delay: -0.4s;">*</span>
+                <span class="star absolute top-[90%] left-[15%] text-brand-green text-xs" style="animation-delay: -2.8s;">+</span>
+                <span class="star absolute top-[65%] left-[95%] text-main-text" style="animation-delay: -1.2s;">*</span>
+                <span class="star absolute top-[5%] left-[25%] text-brand-green text-sm" style="animation-delay: -2.1s;">*</span>
+                <span class="star absolute top-[85%] left-[40%] text-dark-text-secondary text-xs" style="animation-delay: -0.7s;">+</span>
+                <span class="star absolute top-[20%] left-[60%] text-main-text" style="animation-delay: -1.9s;">*</span>
+                <span class="star absolute top-[70%] left-[35%] text-brand-green text-xs" style="animation-delay: -0.1s;">+</span>
+                <span class="star absolute top-[95%] left-[80%] text-dark-text-secondary" style="animation-delay: -1.4s;">*</span>
+            </div>
+
+            <div class="container mx-auto px-6 text-center z-10">
+                <h1 class="text-5xl md:text-6xl lg:text-7xl text-main-text uppercase tracking-widest mb-6">
+                    Coming Soon
                 </h1>
-                <p class="text-xs md:text-sm text-dark-text-secondary max-w-3xl mx-auto mb-8 leading-loose">
-                    A collection of 3,333 unique, algorithmically generated NFTs that represent the essence of identity in the digital age.
+                <p class="text-base md:text-lg text-brand-green mb-2 tracking-wider">
+                    3333 Supply | Free Mint
                 </p>
-                <a href="#" class="bg-brand-green hover:bg-brand-light-green text-dark-bg py-4 px-10 rounded-lg text-sm transition-all duration-300 transform hover:scale-105 inline-block">
-                    Mint Yours Now
-                </a>
+                <p class="text-xs text-dark-text-secondary uppercase tracking-widest">
+                    ETH Network
+                </p>
             </div>
         </section>
 
         <!-- ========== ABOUT SECTION ========== -->
-        <section id="about" class="py-20 fade-in-section">
+        <section id="about" class="py-20 bg-dark-card/60 fade-in-section">
             <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
                 <div class="w-full h-auto flex justify-center items-center">
                     <img src="https://placehold.co/600x600/00ff67/121212?text=CryptoSoul+Art" alt="Art of a CryptoSoul" class="w-2/3 h-auto object-cover rounded-lg shadow-2xl shadow-brand-green/20">
@@ -135,13 +167,46 @@
                     <div class="max-w-lg">
                         <h2 class="text-xl md:text-2xl text-main-text mb-4">What are <span class="text-brand-green">CryptoSouls</span>?</h2>
                         <p class="text-dark-text-secondary mb-4 text-xs leading-loose">
-                            CryptoSouls is more than a collection of JPEGs. It's an artistic exploration of identity on the blockchain. Each "Soul" is generated from hundreds of unique traits, like auras, essences, and fragments, creating a piece of digital art that is uniquely yours.
+                            CryptoSouls is more than a collection of JPEGs. It's an artistic exploration of identity on the blockchain. Each "Soul" is generated from hundreds of unique traits, including different personalities and clothes, to create a digital soul that is uniquely yours.
                         </p>
                         <p class="text-dark-text-secondary text-xs leading-loose">
                             Being a CryptoSoul holder gives you access to a vibrant community, exclusive events, and a role in the evolution of our universe.
                         </p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- ========== SUPPLY DISTRIBUTION SECTION ========== -->
+        <section id="supply" class="py-20 fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="flex justify-center mb-8">
+                    <img src="https://i.imgur.com/s8Iixx2.png" alt="CryptoSouls Logo" class="h-20 w-auto">
+                </div>
+                <h2 class="text-xl md:text-2xl text-center text-main-text mb-12">Supply <span class="text-brand-green">Distribution</span></h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+                    <!-- Preminted -->
+                    <div class="bg-dark-card/60 p-8 rounded-lg text-center shadow-lg">
+                        <h3 class="text-3xl md:text-4xl text-brand-green mb-2">133</h3>
+                        <p class="text-dark-text-secondary text-xs uppercase tracking-widest">Preminted Supply</p>
+                    </div>
+                    <!-- GTD -->
+                    <div class="bg-dark-card/60 p-8 rounded-lg text-center shadow-lg">
+                        <h3 class="text-3xl md:text-4xl text-brand-green mb-2">1200</h3>
+                        <p class="text-dark-text-secondary text-xs uppercase tracking-widest">GTD Supply</p>
+                    </div>
+                    <!-- FCFS -->
+                    <div class="bg-dark-card/60 p-8 rounded-lg text-center shadow-lg">
+                        <h3 class="text-3xl md:text-4xl text-brand-green mb-2">2000</h3>
+                        <p class="text-dark-text-secondary text-xs uppercase tracking-widest">FCFS</p>
+                    </div>
+                    <!-- Public -->
+                    <div class="bg-dark-card/60 p-8 rounded-lg text-center shadow-lg">
+                        <h3 class="text-3xl md:text-4xl text-brand-green mb-2">The Rest</h3>
+                        <p class="text-dark-text-secondary text-xs uppercase tracking-widest">Public</p>
+                    </div>
+                </div>
+                <p class="text-center text-xs text-dark-text-secondary mt-8 max-w-2xl mx-auto leading-relaxed">*50 of the preminted supply will go to the team and 83 will go to treasury, to future giveaways or collabs</p>
             </div>
         </section>
 
@@ -316,5 +381,3 @@
     </script>
 </body>
 </html>
-
-
