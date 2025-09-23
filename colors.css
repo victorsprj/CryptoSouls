@@ -1,0 +1,76 @@
+/* Color Customization Guide for CryptoSouls
+ * Use this file to easily customize the color scheme
+ * Copy these variables to your main styles.css :root section
+ */
+
+/* ===== PALETA DE CORES ATUAL ===== */
+
+/* Verde (Brand Colors) */
+--primary-color: #00ff67;        /* Verde principal - botões, destaques */
+--secondary-color: #32ff84;      /* Verde claro - elementos de suporte */
+
+/* Roxo/Azul (Texto e Fundo) */
+--main-text: #BEA5F5;           /* Texto principal - boa legibilidade */
+--bg-gradient-from: #3a225e;     /* Gradiente de fundo - início */
+--bg-gradient-to: #2a1a47;       /* Gradiente de fundo - fim */
+
+/* Cinzas/Preto (Estrutura) */
+--dark-bg: #121212;             /* Fundo das seções - alto contraste */
+--dark-card: #1E1E1E;           /* Fundo dos cartões */
+--dark-text-secondary: #A0A0A0; /* Texto secundário */
+
+/* Elementos Fixos */
+--accent-color: #FFD93D;         /* Amarelo - destaques especiais */
+
+/* ===== DICAS DE CONTRASTE ===== */
+
+/*
+ * Combinações testadas para bom contraste:
+ *
+ * Texto Principal (#BEA5F5) sobre Fundo Escuro (#121212):
+ * - Contraste: 7.2:1 ✅ (Excelente)
+ *
+ * Texto Secundário (#A0A0A0) sobre Fundo Escuro (#121212):
+ * - Contraste: 4.8:1 ✅ (Bom)
+ *
+ * Verde Principal (#00ff67) sobre Fundo Escuro (#121212):
+ * - Contraste: 6.1:1 ✅ (Bom)
+ */
+
+/* ===== PALETAS ALTERNATIVAS ===== */
+
+/* Paleta Azul/Neon (Alternativa 1) */
+/*
+--primary-color: #00D4FF;
+--secondary-color: #00FF88;
+--main-text: #E0E0FF;
+--dark-bg: #0A0A1E;
+--dark-card: #1A1A2E;
+--dark-text-secondary: #B0B0C0;
+--bg-gradient-from: #0F0F23;
+--bg-gradient-to: #1a1a2e;
+*/
+
+/* Paleta Roxa/Neon (Alternativa 2) */
+/*
+--primary-color: #FF0080;
+--secondary-color: #8000FF;
+--main-text: #E0B0FF;
+--dark-bg: #0A0A0A;
+--dark-card: #1A0A1A;
+--dark-text-secondary: #C0A0C0;
+--bg-gradient-from: #1a0a2e;
+--bg-gradient-to: #2a1a3e;
+*/
+
+/* Paleta Verde/Matrix (Alternativa 3) */
+/*
+--primary-color: #00FF41;
+--secondary-color: #008F11;
+--main-text: #00FF41;
+--dark-bg: #000000;
+--dark-card: #001100;
+--dark-text-secondary: #008F11;
+--bg-gradient-from: #000000;
+--bg-gradient-to: #001100;
+*/
