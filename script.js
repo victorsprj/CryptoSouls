@@ -476,7 +476,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Console Easter Egg
     console.log('%c🎮 Welcome to CryptoSouls! 🎮', 'font-family: "Press Start 2P"; font-size: 20px; color: #FF6B6B;');
-    console.log('%c4444 Unique Pixel Souls await...', 'font-family: "VT323"; font-size: 16px; color: #4ECDC4;');
+    console.log('%c3333 Unique Pixel Souls await...', 'font-family: "VT323"; font-size: 16px; color: #4ECDC4;');
     console.log('%cNote:', 'font-weight:bold;', 'Using temporary placeholder images in collection until contract is finalized.');
 });
 
