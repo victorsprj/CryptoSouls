@@ -6,20 +6,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const CONTRACT_ADDRESS = '0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb';
     const OPENSEA_API_KEY = 'aab93e31722f4378bb84cd90204ca1c1'; // Consider moving to env/server in production
     
-    // Mobile Navigation Toggle
+    // Mobile Navigation Toggle (class-based, matches styles.css)
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
-    
-    if (hamburger) {
+    if (hamburger && navMenu) {
         hamburger.addEventListener('click', function() {
-            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-            navMenu.style.position = 'absolute';
-            navMenu.style.flexDirection = 'column';
-            navMenu.style.top = '100%';
-            navMenu.style.left = '0';
-            navMenu.style.width = '100%';
-            navMenu.style.backgroundColor = 'var(--dark-color)';
-            navMenu.style.padding = '20px';
+            navMenu.classList.toggle('open');
+        });
+        // Close menu when any nav link is clicked
+        navMenu.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => navMenu.classList.remove('open'));
         });
     }
     
@@ -35,14 +31,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (targetSection) {
                     targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
+                // Close mobile menu after navigating
+                if (navMenu) navMenu.classList.remove('open');
             }
         });
     });
     
-    // Soul Preview: show rotating image instead of emojis
+    // Soul Preview: show rotating image instead of emojis (mobile and desktop containers)
     const soulPreview = document.getElementById('soulPreview');
     if (soulPreview) {
         soulPreview.innerHTML = `<img src="https://i.imgur.com/7rnpypd.png" alt="CryptoSouls rotating" />`;
+    }
+    const soulPreviewDesktop = document.getElementById('soulPreviewDesktop');
+    if (soulPreviewDesktop) {
+        soulPreviewDesktop.innerHTML = `<img src="https://i.imgur.com/7rnpypd.png" alt="CryptoSouls rotating" />`;
     }
     
     // Generate Random NFT Collection (fallback mode)
@@ -166,6 +168,56 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initial load from OpenSea
     loadOpenSeaPage(true);
+
+    // Search by Token ID
+    const searchInput = document.getElementById('searchTokenId');
+    const searchBtn = document.getElementById('searchBtn');
+    function performSearch() {
+        if (!searchInput) return;
+        const raw = String(searchInput.value || '').trim();
+        if (!raw) return;
+        const tokenId = parseInt(raw, 10);
+        if (isNaN(tokenId) || tokenId < 0) return;
+        const assetUrl = `https://opensea.io/assets/${CHAIN}/${CONTRACT_ADDRESS}/${tokenId}`;
+
+        // Try to locate an existing card in the grid
+        if (collectionGrid) {
+            const card = collectionGrid.querySelector(`a[href$='/${tokenId}']`);
+            if (card) {
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                card.style.outline = '3px solid var(--primary-color)';
+                setTimeout(() => { card.style.outline = ''; }, 1800);
+                return;
+            }
+        }
+
+        if (usingOpenSea) {
+            // Open in a new tab if not currently loaded
+            window.open(assetUrl, '_blank', 'noopener');
+        } else {
+            // Fallback: render a single placeholder card for the searched token
+            if (collectionGrid) {
+                const name = `Soul #${String(tokenId)}`;
+                const img = 'https://i.imgur.com/qIA3U27.png';
+                const html = `
+                    <a class="nft-card" href="${assetUrl}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+                        <div class="nft-image">
+                            <img src="${img}" alt="${name}" style="width:100%;height:100%;object-fit:cover;image-rendering:pixelated;"/>
+                        </div>
+                        <div class="nft-info">
+                            <div class="nft-name">${name}</div>
+                            <div class="nft-price">FREE</div>
+                        </div>
+                    </a>
+                `;
+                collectionGrid.innerHTML = html;
+            }
+        }
+    }
+    if (searchBtn) searchBtn.addEventListener('click', performSearch);
+    if (searchInput) searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') performSearch();
+    });
     
     // Filter Buttons
     const filterButtons = document.querySelectorAll('.filter-btn');

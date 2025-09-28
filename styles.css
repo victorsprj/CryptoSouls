@@ -4,7 +4,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 /* Impact title effect */
 .impact-title {
     font-size: 42px;
@@ -286,6 +285,10 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     z-index: 1;
 }
+
+/* Hero image variants visibility (desktop default) */
+.hero-image--mobile { display: none; }
+.hero-image--desktop { display: flex; }
 
 /* Glitch Effect for Title */
 .glitch {
@@ -1022,12 +1025,19 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .hamburger {
-        display: flex;
+        display: flex !important;
+        gap: 4px;
+        padding: 6px;
+        z-index: 1200;
+        cursor: pointer;
     }
     
-    .hero-content {
-        padding: 30px 20px;
-    }
+    .hero { flex-direction: column; align-items: center; }
+    .hero-content { padding: 24px 16px; }
+    .hero-image { margin-top: 12px; }
+    /* On mobile, show the mobile image and hide the desktop one */
+    .hero-image--mobile { display: flex; }
+    .hero-image--desktop { display: none; }
     
     .glitch {
         font-size: 32px;
@@ -1037,13 +1047,15 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 20px;
     }
     
-    .stat-box {
-        flex: 1 1 calc(50% - 15px);
-    }
+    .hero-stats { gap: 12px; }
+    .stat-box { flex: 1 1 calc(33.333% - 12px); padding: 12px; }
+    .stat-number { font-size: 18px; }
+    .stat-label { font-size: 14px; }
     
     .pixel-frame {
-        width: 300px;
-        height: 300px;
+        width: 200px;
+        height: 200px;
+        border-width: 4px;
     }
     
     .about-content {
@@ -1054,9 +1066,7 @@ h1, h2, h3, h4, h5, h6 {
         grid-template-columns: 1fr;
     }
     
-    .showcase-grid {
-        grid-template-columns: 1fr;
-    }
+    .showcase-grid { grid-template-columns: repeat(2, 1fr); }
     
     .roadmap-item,
     .roadmap-item:nth-child(even) {
@@ -1080,35 +1090,66 @@ h1, h2, h3, h4, h5, h6 {
         left: 20px;
     }
     
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
+    .footer-content { grid-template-columns: 1fr; text-align: center; }
     
     .social-buttons {
         justify-content: center;
     }
+
+    /* Buttons side-by-side and centered */
+    .hero-buttons { justify-content: center; flex-wrap: nowrap; gap: 12px; }
+
+    /* Smaller 'As seen on' */
+    .as-seen { gap: 8px; margin: 6px 0 12px; }
+    .as-seen-text { font-size: 18px; }
+    .as-seen-img { height: 80px; }
+
+    /* Mobile dropdown menu for navbar */
+    .nav-container { position: relative; }
+    .nav-menu.open {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        position: absolute;
+        right: 20px;
+        top: 60px;
+        background-color: var(--dark-card);
+        border: 3px solid var(--primary-color);
+        padding: 12px;
+        z-index: 1100;
+        box-shadow: var(--pixel-shadow);
+    }
+
+    /* Collection spacing tweaks (tablet/mobile <=768px) */
+    .collection { padding: 70px 0; }
+    .collection-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
 }
 
 @media (max-width: 480px) {
-    body {
-        font-size: 18px;
-    }
+    body { font-size: 18px; }
+    .glitch { font-size: 24px; }
     
-    .glitch {
-        font-size: 24px;
-    }
+    /* Smaller hero image on very small screens */
+    .pixel-frame { width: 140px; height: 140px; border-width: 4px; }
     
-    .section-title {
-        font-size: 24px;
-    }
+    /* Ensure multiple NFTs per row on small screens */
+    .collection-grid { grid-template-columns: repeat(2, 1fr); }
     
-    .pixel-frame {
-        width: 250px;
-        height: 250px;
-    }
+    /* Extra-tight hero on very small screens */
+    .hero-content { padding: 16px 12px; }
+    .hero-stats { gap: 10px; }
+    .stat-box { padding: 10px; }
+    .stat-number { font-size: 16px; }
+    .stat-label { font-size: 12px; }
+    .hero-buttons .pixel-button { padding: 10px 16px; font-size: 11px; }
     
-    .collection-grid {
-        grid-template-columns: 1fr;
-    }
+    /* Smaller 'As seen on' */
+    .as-seen-text { font-size: 16px; }
+    .as-seen-img { height: 64px; }
+    
+    /* Tighter spacing on very small screens */
+    .collection { padding: 60px 0; }
+    .collection-grid { gap: 10px; margin-bottom: 18px; }
+    .nft-card { border-width: 2px; }
+    .nft-price { font-size: 16px; }
 }
